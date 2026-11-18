@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark" style="color-scheme: dark;"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0A0908">
+<title>VelAura · Velas artesanales intencionadas</title>
+<meta name="description" content="Velas artesanales hechas a mano con semillas de abundancia y piedras como pirita y ágata. Cada pieza es única.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&amp;family=Jost:wght@300;400;500&amp;family=Cinzel+Decorative:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  --bosque:#0A0908; --bosque-2:#16130F; --pirita:#CFA24A; --agata:#EDE6D6;
+  --panel:#15120F; --tinta:#E8E0CE; --musgo:#A89F8C; --cera:#0A0908;
+  --serif:"Gilda Display",Georgia,"Times New Roman",serif;
+  --sans:"Jost","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-weight:400;color:var(--tinta);background:var(--cera);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--pirita);outline-offset:3px}
+.wrap{width:min(1120px,100% - 3rem);margin-inline:auto}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.1}
+h2{font-size:clamp(2rem,4.5vw,3rem);margin-bottom:1rem}
+p{max-width:60ch}
+
+/* Navegación */
+.nav{grid-column:1/-1;color:var(--agata);margin-bottom:2rem}
+.marca{grid-column:1/-1;text-align:center;font-family:"Cinzel Decorative",var(--serif);font-weight:700;font-size:clamp(3rem,12vw,9rem);line-height:1;letter-spacing:.06em;padding-left:.06em;margin-bottom:1rem;color:var(--pirita);background:linear-gradient(180deg,#F3DA94 0%,#CFA24A 55%,#9A7225 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 28px rgba(207,162,74,.25))}
+.nav ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 2.2rem;padding:0}
+.nav a{text-decoration:none;font-size:.95rem}
+.nav ul a:hover{color:var(--pirita)}
+
+/* Hero */
+.hero{position:relative;min-height:100svh;background:var(--bosque);color:var(--agata);display:flex;align-items:center;overflow:hidden;transition:background .9s}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 72% 58%,rgba(196,152,63,.55),rgba(196,152,63,0) 46%);opacity:0;transition:opacity 1.2s}
+.hero.lit::before{opacity:1}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center;padding:5rem 0 4rem}
+.hero h1{font-size:clamp(3rem,8vw,6.2rem);letter-spacing:.01em;margin-bottom:1.2rem}
+.hero p.lead{font-size:1.15rem;font-weight:300;color:#BDB5A3;margin-bottom:2rem}
+.btns{display:flex;flex-wrap:wrap;gap:.9rem}
+.btn{font:500 1rem var(--sans);padding:.85rem 1.7rem;border-radius:999px;border:1.5px solid var(--pirita);background:var(--pirita);color:var(--bosque);cursor:pointer;text-decoration:none;display:inline-block;transition:background .25s,color .25s}
+.btn:hover{background:transparent;color:var(--pirita)}
+.btn.ghost{background:transparent;color:var(--agata);border-color:rgba(233,228,239,.45)}
+.btn.ghost:hover{border-color:var(--agata);color:var(--agata)}
+.intencion{min-height:3.2rem;margin-top:1.8rem;font-family:var(--serif);font-size:1.5rem;color:var(--pirita);opacity:0;transform:translateY(6px);transition:opacity .7s,transform .7s}
+.intencion.show{opacity:1;transform:none}
+
+/* Vela */
+.vela{justify-self:center;width:min(300px,70vw)}
+.vela svg{width:100%;height:auto;display:block;overflow:visible}
+.llama{transform-origin:50% 100%;opacity:0;transition:opacity .8s}
+.hero.lit .llama{opacity:1;animation:parpadeo 2.6s ease-in-out infinite}
+.halo{opacity:0;transition:opacity 1s}
+.hero.lit .halo{opacity:.9}
+@keyframes parpadeo{
+  0%,100%{transform:scale(1,1) rotate(0)}
+  30%{transform:scale(.96,1.05) rotate(-1.6deg)}
+  60%{transform:scale(1.03,.97) rotate(1.4deg)}
+}
+
+/* Secciones */
+section{padding:clamp(4rem,9vw,7rem) 0;border-top:1px solid rgba(207,162,74,.22)}
+.intro{background:var(--panel)}
+.intro .wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.intro p+p{margin-top:1rem}
+.mat{display:grid;gap:1.2rem}
+.mat div{padding-left:1.1rem;border-left:3px solid var(--pirita)}
+.mat h3{font-size:1.35rem;margin-bottom:.2rem}
+.mat p{color:var(--musgo);font-size:.98rem}
+@media(max-width:800px){.hero .wrap,.intro .wrap{grid-template-columns:1fr}.vela{order:-1;width:min(200px,50vw);justify-self:center}.hero .wrap{padding-top:4rem}.marca,.nav{order:-2}.nav{margin-bottom:0}}
+
+/* Catálogo */
+.cat-head{display:flex;justify-content:space-between;align-items:end;gap:1rem;flex-wrap:wrap;margin-bottom:2.2rem}
+.cat-head p{color:var(--musgo)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.6rem}
+.card{position:relative}
+.foto{aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:var(--c1);border:1px solid rgba(207,162,74,.3);display:grid;place-items:center;color:rgba(207,162,74,.8);font-size:.9rem}
+.foto img{width:100%;height:100%;object-fit:cover;display:block}
+.card h3{font-size:1.25rem;margin-top:.9rem}
+.card .meta{color:var(--musgo);font-size:.92rem}
+.stock{position:absolute;top:.7rem;left:.7rem;background:var(--pirita);color:var(--bosque);font-size:.82rem;padding:.2rem .7rem;border-radius:999px}
+.vacio{grid-column:1/-1;color:var(--musgo)}
+
+/* Tarjetas y precio */
+.card{cursor:pointer}
+.card .foto{transition:transform .35s ease}
+.card:hover .foto{transform:scale(1.02)}
+.precio{font-family:var(--serif);font-size:1.15rem;color:var(--pirita);margin-top:.15rem}
+
+/* Detalle de la vela (zoom) */
+.modal{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;padding:1.2rem}
+.modal.abierto{display:flex}
+.fondo{position:absolute;inset:0;background:rgba(20,43,39,.74);backdrop-filter:blur(3px)}
+.panel{position:relative;width:min(900px,100%);max-height:92svh;overflow:auto;background:var(--panel);border:1px solid rgba(207,162,74,.35);border-radius:10px;display:grid;grid-template-columns:1fr 1fr;will-change:transform}
+.panel .foto{border-radius:0;aspect-ratio:auto;min-height:380px;height:100%}
+.info{padding:2.4rem 2rem}
+.info h3{font-size:2.1rem;margin-bottom:.3rem}
+.info .precio{font-size:1.7rem;margin-bottom:1rem}
+.info dl{display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.4rem;margin-top:1.3rem;padding-top:1.3rem;border-top:1px solid rgba(207,162,74,.3)}
+.info dt{color:var(--musgo)}
+.info dd{margin:0}
+.cerrar{position:absolute;top:.8rem;right:.8rem;z-index:2;font:500 .95rem var(--sans);padding:.5rem 1.1rem;border-radius:999px;border:0;background:var(--pirita);color:var(--bosque);cursor:pointer}
+.cerrar:hover{background:var(--agata)}
+@media(max-width:700px){.panel{grid-template-columns:1fr}.panel .foto{min-height:0;aspect-ratio:4/3;height:auto}.info{padding:1.6rem 1.4rem 2rem}}
+
+/* Piedras, esencias y colores */
+.materiales{background:var(--panel)}
+.mat-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2.5rem;margin-top:2rem}
+.mat-cols h3{font-size:1.45rem;margin-bottom:.9rem}
+.chips{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
+.chips li{background:rgba(237,230,214,.06);border:1px solid rgba(207,162,74,.3);border-radius:999px;padding:.35rem .95rem;font-size:.95rem;display:flex;align-items:center;gap:.5rem}
+.chips i{width:.9rem;height:.9rem;border-radius:50%;background:var(--c);border:1px solid rgba(237,230,214,.45)}
+.leyenda{margin-top:2.8rem;padding:1.4rem 1.6rem;background:var(--bosque);border-left:3px solid var(--pirita);border-radius:0 6px 6px 0;max-width:68ch}
+.leyenda strong{font-family:var(--serif);font-weight:400;font-size:1.3rem;display:block;margin-bottom:.3rem}
+.leyenda a{color:var(--pirita);font-weight:500}
+
+/* Redes */
+.social{display:flex;gap:1rem}
+.social a{width:3.5rem;height:3.5rem;border-radius:50%;border:1.5px solid var(--pirita);color:var(--pirita);display:grid;place-items:center;transition:background .25s,color .25s}
+.social a:hover{background:var(--pirita);color:var(--bosque)}
+.social svg{width:1.6rem;height:1.6rem;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+/* Cierre */
+.cierre{background:var(--bosque);color:var(--agata);text-align:left}
+.cierre p{color:#BDB5A3;margin-bottom:2rem}
+footer{background:var(--bosque-2);color:#A89F8C;padding:1.6rem 0;font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+
+.signif{margin-top:2.8rem}
+.signif h3{font-size:1.45rem;margin-bottom:1rem}
+.signif ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.1rem 2rem}
+.signif li{display:grid;grid-template-columns:auto 1fr;gap:.1rem .8rem;align-items:center}
+.signif i{width:1.1rem;height:1.1rem;border-radius:50%;background:var(--c);border:1px solid rgba(237,230,214,.45)}
+.signif b{font-weight:500}
+.signif p{grid-column:2;color:var(--musgo);font-size:.95rem}
+
+/* Panel de administración */
+#admin{position:fixed;inset:0;z-index:60;background:var(--bosque);overflow:auto;padding:1.2rem}
+#admin[hidden]{display:none}
+.ad-wrap{width:min(960px,100%);margin:0 auto;padding-bottom:4rem}
+.ad-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:.6rem}
+.ad-top h2{margin:0;font-size:1.8rem}
+.ad-nota,#ad-msg{color:var(--musgo);font-size:.92rem;margin-bottom:1rem}
+.ad-tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.2rem}
+.mini{font:inherit;font-size:.9rem;padding:.4rem .9rem;border-radius:999px;border:1px solid var(--pirita);background:transparent;color:var(--pirita);cursor:pointer}
+.mini:hover,.mini.on{background:var(--pirita);color:var(--bosque)}
+.ad-card{display:grid;grid-template-columns:130px 1fr;gap:1rem;border:1px solid rgba(207,162,74,.3);border-radius:8px;padding:1rem;margin-bottom:1rem}
+.ad-thumb{aspect-ratio:4/5;border:1px solid rgba(207,162,74,.3);border-radius:6px;background:var(--panel) center/cover;display:grid;place-items:center;font-size:.8rem;color:var(--musgo);margin-bottom:.5rem}
+.ad-f{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.7rem}
+.ad-f .full,.ad-pie{grid-column:1/-1}
+.ad-pie{display:flex;justify-content:space-between;align-items:center;gap:.5rem}
+.ad-pie span{color:var(--pirita);font-size:.9rem}
+#admin label,.qty{display:grid;gap:.2rem;font-size:.85rem;color:var(--musgo)}
+#admin input,#admin textarea{font:inherit;color:var(--agata);background:rgba(237,230,214,.07);border:1px solid rgba(207,162,74,.3);border-radius:6px;padding:.5rem .6rem;width:100%}
+#admin input[type=color]{padding:.1rem;height:2.4rem;width:3.4rem}
+.qty div{display:flex;gap:.4rem;align-items:center}
+.ad-row{display:flex;gap:.5rem;align-items:center;margin-bottom:.6rem}
+.ad-fab{position:fixed;right:1rem;bottom:1rem;z-index:40}
+@media(max-width:600px){.ad-card{grid-template-columns:1fr}.ad-thumb{max-width:150px}}
+
+.info .btn{margin-top:1.4rem}
+.pedir ol{list-style:none;padding:0;margin-top:2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.6rem;counter-reset:p}
+.pedir li{counter-increment:p;border-top:1px solid rgba(207,162,74,.4);padding-top:1rem}
+.pedir li::before{content:counter(p,decimal-leading-zero);font-family:var(--serif);font-size:2rem;line-height:1;color:var(--pirita);display:block;margin-bottom:.5rem}
+.pedir h3{font-size:1.3rem;margin-bottom:.3rem}
+.pedir li p{color:var(--musgo);font-size:.98rem}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero.lit .llama{animation:none}
+  *{transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<header class="hero" id="inicio">
+  <div class="wrap">
+    <div class="marca">VelAura</div>
+    <nav class="nav" aria-label="Principal">
+      <ul>
+        <li><a href="#esencia">Esencia</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#pedir">Cómo pedir</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h1>Enciende tu intención</h1>
+      <p class="lead">Velas artesanales hechas a mano, con semillas de abundancia y piedras como pirita y ágata. Cada una es una pieza única.</p>
+      <div class="btns">
+        <button class="btn" id="encender" type="button" aria-pressed="false">Encender la vela</button>
+        <a class="btn ghost" href="#catalogo">Ver catálogo</a>
+      </div>
+      <p class="intencion" id="intencion" aria-live="polite"></p>
+    </div>
+
+    <div class="vela" aria-hidden="true">
+      <svg viewBox="0 0 220 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="halo"><stop offset="0" stop-color="#F6D98A" stop-opacity=".85"></stop><stop offset="1" stop-color="#F6D98A" stop-opacity="0"></stop></radialGradient>
+          <linearGradient id="llama" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#E7A93C"></stop><stop offset=".6" stop-color="#F6D98A"></stop><stop offset="1" stop-color="#FFF7DE"></stop></linearGradient>
+          <linearGradient id="frasco" x1="0" x2="1"><stop offset="0" stop-color="#14120F"></stop><stop offset=".5" stop-color="#2A261F"></stop><stop offset="1" stop-color="#0F0D0B"></stop></linearGradient>
+        </defs>
+        <circle class="halo" cx="110" cy="92" r="95" fill="url(#halo)"></circle>
+        <path class="llama" d="M110 40 C128 66 134 84 122 100 C118 106 102 106 98 100 C86 84 94 66 110 40Z" fill="url(#llama)"></path>
+        <rect x="108" y="100" width="4" height="22" rx="2" fill="#3A2F2A"></rect>
+        <rect x="46" y="120" width="128" height="160" rx="16" fill="url(#frasco)" stroke="#CFA24A" stroke-opacity=".6"></rect>
+        <rect x="52" y="120" width="116" height="26" rx="10" fill="#CFA24A"></rect>
+        <!-- piedras y semillas -->
+        <polygon points="70,262 82,248 98,252 94,270 76,272" fill="#C4983F"></polygon>
+        <polygon points="104,266 118,252 134,258 130,274 112,274" fill="#D6B25E"></polygon>
+        <circle cx="146" cy="262" r="10" fill="#E9E4EF" opacity=".9"></circle>
+        <circle cx="66" cy="228" r="3" fill="#F3EBDD"></circle><circle cx="148" cy="222" r="3" fill="#F3EBDD"></circle>
+        <circle cx="92" cy="236" r="2.5" fill="#F3EBDD"></circle><circle cx="130" cy="238" r="2.5" fill="#F3EBDD"></circle>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section class="intro" id="esencia">
+  <div class="wrap">
+    <div>
+      <h2>Hechas a mano, una por una</h2>
+      <p>Cada vela de VelAura se prepara con calma y con una intención: abundancia, protección, amor o tranquilidad.</p>
+      <p>Trabajamos con los envases que vamos encontrando, así que cada pieza es distinta y no siempre se repite.</p>
+    </div>
+    <div class="mat">
+      <div><h3>Semillas de abundancia</h3><p>Se colocan dentro de cada vela como símbolo de lo que quieres atraer.</p></div>
+      <div><h3>Piedras y cristales</h3><p>Pirita, ágatas y otras piedras elegidas según la intención de la vela.</p></div>
+      <div><h3>Piezas únicas</h3><p>Hay pocas unidades de cada diseño. Cuando se agota, es posible que no vuelva.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="catalogo">
+  <div class="wrap">
+    <div class="cat-head">
+      <h2>Catálogo</h2>
+      <p>Disponible hasta agotar existencias. Toca una vela para ver más.</p>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section class="materiales" id="materiales">
+  <div class="wrap">
+    <h2>Piedras, esencias y colores</h2>
+    <p>Esto es con lo que trabajamos ahora mismo. Cada vela combina una piedra, un olor y un color.</p>
+    <div class="mat-cols">
+      <div><h3>Piedras</h3><ul class="chips" id="l-piedras"></ul></div>
+      <div><h3>Esencias</h3><ul class="chips" id="l-esencias"></ul></div>
+      <div><h3>Colores</h3><ul class="chips" id="l-colores"></ul></div>
+    </div>
+    <div class="signif" id="significados" hidden>
+      <h3>Significado de cada color</h3>
+      <ul id="l-signif"></ul>
+    </div>
+    <div class="leyenda">
+      <strong>Las velas publicadas son únicas</strong>
+      Si quieres una vela con un color, un olor y una piedra en específico, escríbenos y la preparamos para ti. En ciertos envases se pueden usar hasta 3 colores. Contáctanos para cotizar el precio y ver si se pueden juntar los 3 colores o, como máximo, 2. <a href="#contacto">Ir a contacto</a>
+    </div>
+  </div>
+</section>
+
+<section class="pedir" id="pedir">
+  <div class="wrap">
+    <h2>Cómo pedir</h2>
+    <p>Todo se acuerda por chat, de forma sencilla y personal.</p>
+    <ol>
+      <li><h3>Elige tu vela</h3><p>Mira el catálogo y toca la que te guste para ver su esencia, medidas y precio.</p></li>
+      <li><h3>Escríbenos por WhatsApp</h3><p>Con el botón «Pedir por WhatsApp» el mensaje ya lleva el nombre de la vela.</p></li>
+      <li><h3>Confirmamos contigo</h3><p>Te decimos si sigue disponible y, si quieres, vemos cómo personalizar color, olor o piedra.</p></li>
+      <li><h3>Pago y entrega</h3><p>El pago se acuerda en el chat, por transferencia o en efectivo, y la entrega es en una zona que acordemos contigo.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="cierre" id="contacto">
+  <div class="wrap">
+    <h2>¿Te gustó alguna vela?</h2>
+    <p>Escríbenos con el nombre de la vela y te confirmamos si sigue disponible, o cuéntanos cómo quieres tu vela personalizada.</p>
+    <div class="social">
+      <a id="ig" href="https://instagram.com/velaura" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.3" cy="6.7" r=".6"></circle></svg>
+      </a>
+      <a id="wa" href="https://wa.me/" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21l1.6-4.8A9 9 0 1 1 8 19.4L3 21z"></path><path d="M9.2 8.6c0 3.3 2.9 6.2 6.2 6.2l1-1.5-2.2-1.1-.9.8c-1.1-.5-2.1-1.5-2.6-2.6l.8-.9-1.1-2.2-1.2 1.3z"></path></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span>VelAura · Velas artesanales intencionadas</span><span id="anio"></span></div>
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="m-nombre" aria-hidden="true">
+  <div class="fondo" id="m-fondo"></div>
+  <div class="panel" id="m-panel">
+    <button class="cerrar" id="m-cerrar" type="button">Cerrar</button>
+    <div class="foto" id="m-foto"></div>
+    <div class="info">
+      <h3 id="m-nombre"></h3>
+      <p class="precio" id="m-precio"></p>
+      <p id="m-desc"></p>
+      <dl>
+        <dt>Esencia</dt><dd id="m-esencia"></dd>
+        <dt>Medidas</dt><dd id="m-medidas"></dd>
+        <dt>Disponible</dt><dd id="m-stock"></dd>
+      </dl>
+      <a class="btn" id="m-pedir" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<script type="application/json" id="datos">{"ig": "velaura", "wa": "52XXXXXXXXXX", "velas": [{"nombre": "Abundancia dorada", "detalle": "Pirita y semillas de abundancia", "precio": 220, "cantidad": 2, "img": "", "descripcion": "Vela con semillas de abundancia y pirita en la superficie, preparada con la intención de atraer prosperidad.", "esencia": "Canela y naranja", "medidas": "9 cm de alto × 8 cm de ancho"}, {"nombre": "Ágata azul", "detalle": "Calma y claridad", "precio": 190, "cantidad": 1, "img": "", "descripcion": "Vela suave con ágata azul, pensada para momentos de descanso y claridad mental.", "esencia": "Lavanda", "medidas": "8 cm de alto × 7 cm de ancho"}, {"nombre": "Raíz y prosperidad", "detalle": "Pirita, ágata musgo", "precio": 250, "cantidad": 3, "img": "", "descripcion": "Combina pirita y ágata musgo con semillas, para quien busca estabilidad y crecimiento.", "esencia": "Sándalo y vainilla", "medidas": "10 cm de alto × 8 cm de ancho"}, {"nombre": "Cuarzo rosa", "detalle": "Amor y ternura", "precio": 200, "cantidad": 1, "img": "", "descripcion": "Vela con cuarzo rosa para acompañar intenciones de amor propio y cariño.", "esencia": "Rosa y vainilla", "medidas": "8 cm de alto × 7 cm de ancho"}, {"nombre": "Protección", "detalle": "Obsidiana y ágata negra", "precio": 230, "cantidad": 2, "img": "", "descripcion": "Vela oscura con obsidiana y ágata negra, preparada con intención de protección.", "esencia": "Eucalipto y menta", "medidas": "9 cm de alto × 8 cm de ancho"}, {"nombre": "Luz de agosto", "detalle": "Citrino y semillas", "precio": 210, "cantidad": 1, "img": "", "descripcion": "Vela luminosa con citrino y semillas, para dar la bienvenida a la alegría y la abundancia.", "esencia": "Cítricos", "medidas": "8 cm de alto × 8 cm de ancho"}, {"nombre": "hola", "detalle": "si", "precio": 500, "cantidad": 1, "img": "", "descripcion": "", "esencia": "", "medidas": ""}], "piedras": ["Pirita", "Ágata azul", "Ágata musgo", "Ágata negra", "Cuarzo rosa", "Citrino", "Obsidiana"], "esencias": ["Lavanda", "Canela y naranja", "Sándalo", "Vainilla", "Rosa", "Eucalipto y menta", "Cítricos"], "colores": [{"n": "Verde bosque", "c": "#2F5D52", "s": "Abundancia, prosperidad y crecimiento"}, {"n": "Lila", "c": "#8E7BB0", "s": "Intuición, espiritualidad y calma interior"}, {"n": "Dorado", "c": "#C4983F", "s": "Éxito, energía solar y atracción de riqueza"}, {"n": "Rosa", "c": "#D9A3A0", "s": "Amor, ternura y amor propio"}, {"n": "Azul", "c": "#3A4F6B", "s": "Calma, comunicación y claridad mental"}, {"n": "Blanco", "c": "#F3EBDD", "s": "Paz, pureza y limpieza de energías"}, {"n": "Negro", "c": "#1D2826", "s": "Protección y liberación de lo que pesa"}]}</script>
+<script type="module" id="app">
+/* ============ DATOS ============
+   Velas, piedras, esencias, colores y contacto viven en el bloque <script id="datos"> de arriba.
+   Se editan desde admin.html, que genera el archivo datos.json. */
+let DATA = JSON.parse(document.getElementById("datos").textContent); // respaldo
+try {
+  const r = await fetch("datos.json?v=" + Date.now(), { cache: "no-store" });
+  if (r.ok) DATA = await r.json();
+} catch (e) { /* si no hay datos.json, se usan los datos de respaldo */ }
+const velas = DATA.velas.filter(v => v.cantidad > 0);
+const piedras = DATA.piedras, esencias = DATA.esencias, colores = DATA.colores;
+const IG_USUARIO = DATA.ig, WHATSAPP_NUMERO = DATA.wa;
+
+/* ============ Catálogo ============ */
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const colorFoto = ["#221D14","#1B1A18","#2B2316","#201B1F","#171C1B","#2A2019"];
+const grid = document.getElementById("grid");
+const peso = n => "$" + n;
+const textoStock = n => n === 1 ? "Última pieza" : n + " disponibles";
+
+function llenarFoto(el, v, i) {
+  el.innerHTML = "";
+  el.style.setProperty("--c1", colorFoto[i % colorFoto.length]);
+  if (v.img) {
+    const im = document.createElement("img");
+    im.src = v.img; im.alt = v.nombre;
+    el.appendChild(im);
+  } else {
+    el.textContent = "Tu foto aquí";
+  }
+}
+
+if (!velas.length) {
+  grid.innerHTML = '<p class="vacio">Por ahora no hay velas disponibles. Escríbenos para saber cuándo llegan nuevas.</p>';
+}
+velas.forEach((v, i) => {
+  const card = document.createElement("article");
+  card.className = "card";
+  card.tabIndex = 0;
+  card.setAttribute("role", "button");
+  card.setAttribute("aria-label", "Ver detalles de " + v.nombre);
+  const foto = document.createElement("div");
+  foto.className = "foto";
+  llenarFoto(foto, v, i);
+  const stock = document.createElement("span");
+  stock.className = "stock";
+  stock.textContent = textoStock(v.cantidad);
+  const h = document.createElement("h3");  h.textContent = v.nombre;
+  const m = document.createElement("p");   m.className = "meta";   m.textContent = v.detalle;
+  const pr = document.createElement("p");  pr.className = "precio"; pr.textContent = peso(v.precio);
+  card.append(foto, stock, h, m, pr);
+  card.addEventListener("click", () => abrir(v, i, card));
+  card.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); abrir(v, i, card); }
+  });
+  grid.appendChild(card);
+});
+
+/* ============ Detalle con zoom ============ */
+const modal = document.getElementById("modal");
+const panel = document.getElementById("m-panel");
+const fondo = document.getElementById("m-fondo");
+const btnCerrar = document.getElementById("m-cerrar");
+let origen = null;
+
+function transformDesde(card) {
+  const a = card.querySelector(".foto").getBoundingClientRect();
+  const b = panel.getBoundingClientRect();
+  const dx = (a.left + a.width / 2) - (b.left + b.width / 2);
+  const dy = (a.top + a.height / 2) - (b.top + b.height / 2);
+  const s = Math.max(a.width / b.width, 0.2);
+  return "translate(" + dx + "px," + dy + "px) scale(" + s + ")";
+}
+
+function abrir(v, i, card) {
+  origen = card;
+  llenarFoto(document.getElementById("m-foto"), v, i);
+  document.getElementById("m-nombre").textContent = v.nombre;
+  document.getElementById("m-precio").textContent = peso(v.precio);
+  document.getElementById("m-desc").textContent = v.descripcion;
+  document.getElementById("m-esencia").textContent = v.esencia;
+  document.getElementById("m-medidas").textContent = v.medidas;
+  document.getElementById("m-stock").textContent = textoStock(v.cantidad);
+  document.getElementById("m-pedir").href = "https://wa.me/" + WHATSAPP_NUMERO + "?text=" +
+    encodeURIComponent("Hola, me interesa la vela «" + v.nombre + "» (" + peso(v.precio) + "). ¿Sigue disponible?");
+  modal.classList.add("abierto");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  if (!reduce) {
+    panel.animate([{ transform: transformDesde(card), opacity: .25 }, { transform: "none", opacity: 1 }],
+                  { duration: 480, easing: "cubic-bezier(.2,.8,.2,1)" });
+    fondo.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 380 });
+  }
+  btnCerrar.focus();
+}
+
+function cerrar() {
+  if (!modal.classList.contains("abierto")) return;
+  const terminar = () => {
+    panel.getAnimations().forEach(a => a.cancel());
+    fondo.getAnimations().forEach(a => a.cancel());
+    modal.classList.remove("abierto");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    if (origen) origen.focus();
+  };
+  if (reduce || !origen) { terminar(); return; }
+  const anim = panel.animate([{ transform: "none", opacity: 1 }, { transform: transformDesde(origen), opacity: 0 }],
+                             { duration: 360, easing: "ease-in", fill: "forwards" });
+  fondo.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 360, fill: "forwards" });
+  anim.onfinish = terminar;
+}
+
+btnCerrar.addEventListener("click", cerrar);
+fondo.addEventListener("click", cerrar);
+document.addEventListener("keydown", e => {
+  if (!modal.classList.contains("abierto")) return;
+  if (e.key === "Escape") cerrar();
+  if (e.key === "Tab") { e.preventDefault(); (document.activeElement === btnCerrar ? document.getElementById("m-pedir") : btnCerrar).focus(); }
+});
+
+/* ============ Piedras, esencias y colores ============ */
+function lista(id, items, conColor) {
+  const ul = document.getElementById(id);
+  items.forEach(x => {
+    const li = document.createElement("li");
+    if (conColor) {
+      const i = document.createElement("i");
+      i.style.setProperty("--c", x.c);
+      li.append(i, x.n);
+    } else {
+      li.textContent = x;
+    }
+    ul.appendChild(li);
+  });
+}
+lista("l-piedras", piedras);
+lista("l-esencias", esencias);
+lista("l-colores", colores, true);
+const significados = colores.filter(c => c.s && c.s.trim());
+if (significados.length) {
+  const ul = document.getElementById("l-signif");
+  significados.forEach(c => {
+    const li = document.createElement("li");
+    const i = document.createElement("i"); i.style.setProperty("--c", c.c);
+    const b = document.createElement("b"); b.textContent = c.n;
+    const t = document.createElement("p"); t.textContent = c.s;
+    li.append(i, b, t);
+    ul.appendChild(li);
+  });
+  document.getElementById("significados").hidden = false;
+}
+
+/* ============ Vela interactiva ============ */
+const hero = document.getElementById("inicio");
+const btn = document.getElementById("encender");
+const txt = document.getElementById("intencion");
+const frases = [
+  "Que la abundancia llegue a tu casa.",
+  "Que tus días se llenen de calma.",
+  "Que el camino se abra a tu favor.",
+  "Que lo que siembras florezca."
+];
+let n = 0;
+btn.addEventListener("click", () => {
+  const encendida = hero.classList.toggle("lit");
+  btn.setAttribute("aria-pressed", encendida);
+  btn.textContent = encendida ? "Apagar la vela" : "Encender la vela";
+  if (encendida) {
+    txt.textContent = frases[n++ % frases.length];
+    txt.classList.add("show");
+  } else {
+    txt.classList.remove("show");
+  }
+});
+
+/* ============ Varios ============ */
+document.getElementById("ig").href = "https://instagram.com/" + IG_USUARIO;
+document.getElementById("wa").href = "https://wa.me/" + WHATSAPP_NUMERO + "?text=" + encodeURIComponent("Hola, me interesa una vela de VelAura.");
+document.getElementById("anio").textContent = "© " + new Date().getFullYear();
+
+/* ============ ADMINISTRACIÓN (solo funciona con tu token de GitHub) ============
+   Entra a tu sitio con #admin al final. La primera vez te pide tu token;
+   se guarda solo en ese dispositivo. Guardar = actualizar datos.json en tu repositorio.
+   Si tu sitio no es de github.io, escribe tu usuario y repositorio aquí: */
+(() => {
+  const CONFIG = { usuario: "", repo: "", rama: "main" };
+  const KEY = "velaura_token";
+  const esc = t => String(t == null ? "" : t).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const TABS = { velas:"Velas", piedras:"Piedras", esencias:"Esencias", colores:"Colores", contacto:"Contacto" };
+  const ov = document.createElement("div");
+  ov.id = "admin"; ov.hidden = true;
+  document.body.appendChild(ov);
+  let draft, tab = "velas", subirA = -1;
+  const previews = {};
+  const vista = p => previews[p] || p;
+  const msg = t => { const el = document.getElementById("ad-msg"); if (el) el.textContent = t; };
+  const nuevaVela = () => ({ nombre:"", detalle:"", precio:0, cantidad:1, img:"", descripcion:"", esencia:"", medidas:"" });
+  const token = () => { try { return localStorage.getItem(KEY) || ""; } catch (e) { return ""; } };
+
+  function destino() {
+    let u = CONFIG.usuario, r = CONFIG.repo;
+    if (!u && /\.github\.io$/.test(location.hostname)) {
+      u = location.hostname.split(".")[0];
+      const seg = location.pathname.split("/")[1];
+      r = seg && !seg.includes(".") ? seg : location.hostname;
+    }
+    return u && r ? { u, r } : null;
+  }
+  async function gh(ruta, opts, tk) {
+    const d = destino();
+    if (!d) throw new Error("Escribe tu usuario y repositorio en CONFIG, dentro del código.");
+    opts = opts || {};
+    return fetch("https://api.github.com/repos/" + d.u + "/" + d.r + ruta, Object.assign({}, opts, {
+      headers: Object.assign({ Accept: "application/vnd.github+json", Authorization: "Bearer " + (tk || token()) }, opts.headers || {})
+    }));
+  }
+  const errGh = st => st === 401 || st === 403 ? "El token no es válido o no tiene permiso. Vuelve a conectarlo." : st === 404 ? "No se encontró el repositorio. Revisa el usuario y el nombre." : "Error de GitHub (" + st + ").";
+  const b64 = t => btoa(unescape(encodeURIComponent(t)));
+
+  async function cargarDatos() {
+    try {
+      const r = await gh("/contents/datos.json?ref=" + CONFIG.rama, { headers: { Accept: "application/vnd.github.raw+json" } });
+      if (r.ok) return await r.json();
+    } catch (e) {}
+    return DATA;
+  }
+  async function guardarDatos(datos) {
+    for (let n = 0; n < 2; n++) {
+      let sha;
+      const g = await gh("/contents/datos.json?ref=" + CONFIG.rama);
+      if (g.ok) sha = (await g.json()).sha; else if (g.status !== 404) throw new Error(errGh(g.status));
+      const p = await gh("/contents/datos.json", { method: "PUT", body: JSON.stringify({ message: "Actualizar catálogo", content: b64(JSON.stringify(datos, null, 2)), branch: CONFIG.rama, sha }) });
+      if (p.ok) return "Guardado. En 1 o 2 minutos se verá en la página de tus clientes.";
+      if (p.status !== 409 && p.status !== 422) throw new Error(errGh(p.status));
+    }
+    throw new Error("No se pudo guardar por un conflicto. Inténtalo otra vez.");
+  }
+  async function subirFoto(archivo) {
+    const bmp = await createImageBitmap(archivo);
+    const k = Math.min(1, 900 / Math.max(bmp.width, bmp.height));
+    const c = document.createElement("canvas");
+    c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
+    c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
+    const url = c.toDataURL("image/jpeg", 0.82);
+    const nombre = "fotos/" + Date.now() + ".jpg";
+    const p = await gh("/contents/" + nombre, { method: "PUT", body: JSON.stringify({ message: "Agregar foto", content: url.split(",")[1], branch: CONFIG.rama }) });
+    if (!p.ok) throw new Error(errGh(p.status));
+    previews[nombre] = url;
+    return nombre;
+  }
+  function limpiar(d) {
+    const o = JSON.parse(JSON.stringify(d));
+    o.piedras = o.piedras.map(x => x.trim()).filter(Boolean);
+    o.esencias = o.esencias.map(x => x.trim()).filter(Boolean);
+    o.colores = o.colores.filter(c => c.n.trim());
+    o.velas = o.velas.filter(v => v.nombre.trim());
+    return o;
+  }
+
+  function cuerpo() {
+    if (tab === "velas") {
+      return draft.velas.map((v, i) => {
+        const d = 'data-p="velas" data-i="' + i + '"';
+        return '<div class="ad-card"><div><div class="ad-thumb"' + (v.img ? ' style="background-image:url(\'' + esc(vista(v.img)) + '\')"' : "") + '>' + (v.img ? "" : "Sin foto") + '</div>' +
+          '<button class="mini" type="button" data-a="subir" data-i="' + i + '">Subir foto</button></div>' +
+          '<div class="ad-f">' +
+          '<label>Nombre<input ' + d + ' data-k="nombre" value="' + esc(v.nombre) + '"></label>' +
+          '<label>Piedra o intención<input ' + d + ' data-k="detalle" value="' + esc(v.detalle) + '"></label>' +
+          '<label>Precio ($)<input type="number" min="0" ' + d + ' data-k="precio" value="' + esc(v.precio) + '"></label>' +
+          '<div class="qty">Cantidad disponible<div><button class="mini" type="button" data-a="menos" data-i="' + i + '">−</button><input type="number" min="0" ' + d + ' data-k="cantidad" value="' + esc(v.cantidad) + '"><button class="mini" type="button" data-a="mas" data-i="' + i + '">+</button></div></div>' +
+          '<label>Esencia (olor)<input ' + d + ' data-k="esencia" value="' + esc(v.esencia) + '"></label>' +
+          '<label>Medidas aproximadas<input ' + d + ' data-k="medidas" value="' + esc(v.medidas) + '"></label>' +
+          '<label class="full">Descripción<textarea rows="2" ' + d + ' data-k="descripcion">' + esc(v.descripcion) + '</textarea></label>' +
+          '<label class="full">Enlace de la foto (se llena solo al subirla)<input ' + d + ' data-k="img" value="' + esc(v.img) + '"></label>' +
+          '<div class="ad-pie"><span>' + (v.cantidad <= 0 ? "Agotada: no se muestra a los clientes" : "") + '</span><button class="mini" type="button" data-a="borrar" data-i="' + i + '">Eliminar vela</button></div>' +
+          '</div></div>';
+      }).join("") + '<button class="mini" type="button" data-a="agregar">Agregar vela</button>';
+    }
+    if (tab === "piedras" || tab === "esencias") {
+      return draft[tab].map((x, i) => '<div class="ad-row"><input data-p="' + tab + '" data-i="' + i + '" value="' + esc(x) + '"><button class="mini" type="button" data-a="borrar" data-i="' + i + '">Quitar</button></div>').join("") +
+        '<button class="mini" type="button" data-a="agregar">Agregar ' + (tab === "piedras" ? "piedra" : "esencia") + '</button>';
+    }
+    if (tab === "colores") {
+      return draft.colores.map((c, i) => '<div class="ad-row"><input type="color" data-p="colores" data-i="' + i + '" data-k="c" value="' + esc(c.c) + '"><input data-p="colores" data-i="' + i + '" data-k="n" value="' + esc(c.n) + '" placeholder="Nombre del color"><input data-p="colores" data-i="' + i + '" data-k="s" value="' + esc(c.s) + '" placeholder="Significado (ej. abundancia)"><button class="mini" type="button" data-a="borrar" data-i="' + i + '">Quitar</button></div>').join("") +
+        '<button class="mini" type="button" data-a="agregar">Agregar color</button>';
+    }
+    return '<div class="ad-f"><label>Usuario de Instagram (sin @)<input data-p="ig" value="' + esc(draft.ig) + '"></label>' +
+      '<label>WhatsApp con código de país, sin + ni espacios<input data-p="wa" value="' + esc(draft.wa) + '" placeholder="5215512345678"></label></div>';
+  }
+  function pintar() {
+    document.getElementById("ad-tabs").innerHTML = Object.keys(TABS).map(k => '<button class="mini' + (k === tab ? " on" : "") + '" type="button" data-a="tab" data-t="' + k + '">' + TABS[k] + '</button>').join("");
+    document.getElementById("ad-body").innerHTML = cuerpo();
+  }
+
+
+  function conectar() {
+    ov.innerHTML = '<div class="ad-wrap"><div class="ad-top"><h2>Conectar administración</h2><button class="btn ghost" type="button" data-a="salir">Salir</button></div>' +
+      '<p class="ad-nota">Pega aquí tu token de GitHub (solo con permiso de «Contents: Read and write» sobre este repositorio). Se guarda únicamente en este dispositivo.</p>' +
+      '<div class="ad-f"><label class="full">Token de GitHub<input id="ad-tk" type="password" autocomplete="off"></label></div>' +
+      '<p><button class="btn" type="button" data-a="conectar">Conectar</button></p><p id="ad-msg" role="status"></p></div>';
+    ov.hidden = false; document.body.style.overflow = "hidden";
+  }
+  async function abrir() {
+    if (!token()) return conectar();
+    ov.innerHTML = '<div class="ad-wrap"><p class="ad-nota">Cargando…</p></div>';
+    ov.hidden = false; document.body.style.overflow = "hidden";
+    draft = JSON.parse(JSON.stringify(await cargarDatos()));
+    ov.innerHTML = '<div class="ad-wrap"><div class="ad-top"><h2>Administrar VelAura</h2><div class="btns"><button class="btn" type="button" data-a="guardar">Guardar cambios</button><button class="btn ghost" type="button" data-a="salir">Salir</button></div></div>' +
+      '<p class="ad-nota">Tus clientes verán los cambios unos minutos después de guardar. Una vela con cantidad 0 deja de mostrarse.</p>' +
+      '<div class="ad-tabs" id="ad-tabs"></div><div id="ad-body"></div><p id="ad-msg" role="status"></p><input type="file" id="ad-file" accept="image/*" hidden></div>';
+    pintar();
+    document.getElementById("ad-file").addEventListener("change", async e => {
+      const f = e.target.files[0]; e.target.value = "";
+      if (!f || subirA < 0) return;
+      msg("Subiendo foto…");
+      try { draft.velas[subirA].img = await subirFoto(f); pintar(); msg("Foto subida. Falta pulsar «Guardar cambios»."); }
+      catch (err) { msg("No se pudo subir la foto: " + err.message); }
+    });
+  }
+  function salir() {
+    ov.hidden = true; document.body.style.overflow = "";
+    if (location.hash === "#admin") location.hash = "inicio";
+  }
+
+  ov.addEventListener("input", e => {
+    const t = e.target, p = t.dataset.p;
+    if (!p || !draft) return;
+    let v = t.value;
+    if (t.type === "number") v = Math.max(0, Math.round(Number(v)) || 0);
+    if (t.dataset.i === undefined) draft[p] = v;
+    else if (t.dataset.k === undefined) draft[p][t.dataset.i] = v;
+    else draft[p][t.dataset.i][t.dataset.k] = v;
+  });
+  ov.addEventListener("click", async e => {
+    const b = e.target.closest("[data-a]");
+    if (!b) return;
+    const a = b.dataset.a, i = Number(b.dataset.i);
+    if (a === "salir") return salir();
+    if (a === "conectar") {
+      const tk = document.getElementById("ad-tk").value.trim();
+      if (!tk) return msg("Pega tu token.");
+      msg("Comprobando…");
+      try {
+        const r = await gh("", {}, tk);
+        if (!r.ok) return msg(errGh(r.status));
+        const info = await r.json();
+        if (!(info.permissions && info.permissions.push)) return msg("Ese token no tiene permiso para escribir en el repositorio.");
+        localStorage.setItem(KEY, tk);
+        fab.hidden = false;
+        return abrir();
+      } catch (err) { return msg(err.message); }
+    }
+    if (!draft) return;
+    if (a === "guardar") {
+      msg("Guardando…");
+      try { msg(await guardarDatos(limpiar(draft))); } catch (err) { msg("No se pudo guardar: " + err.message); }
+      return;
+    }
+    if (a === "tab") { tab = b.dataset.t; return pintar(); }
+    if (a === "subir") { subirA = i; return document.getElementById("ad-file").click(); }
+    if (a === "mas") draft.velas[i].cantidad++;
+    if (a === "menos") draft.velas[i].cantidad = Math.max(0, draft.velas[i].cantidad - 1);
+    if (a === "borrar") draft[tab].splice(i, 1);
+    if (a === "agregar") draft[tab].push(tab === "velas" ? nuevaVela() : tab === "colores" ? { n:"", c:"#cfa24a" } : "");
+    pintar();
+  });
+
+  const fab = document.createElement("button");
+  fab.className = "btn ad-fab"; fab.type = "button"; fab.textContent = "Administrar"; fab.hidden = !token();
+  fab.addEventListener("click", () => { location.hash = "admin"; if (ov.hidden) abrir(); });
+  document.body.appendChild(fab);
+  const ruta = () => { if (location.hash === "#admin" && ov.hidden) abrir(); };
+  addEventListener("hashchange", ruta);
+  ruta();
+})();
+</script></body></html>
