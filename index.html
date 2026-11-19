@@ -532,11 +532,22 @@ document.getElementById("anio").textContent = "© " + new Date().getFullYear();
     const d = destino();
     if (!d) throw new Error("Escribe tu usuario y repositorio en CONFIG, dentro del código.");
     opts = opts || {};
-    return fetch("https://api.github.com/repos/" + d.u + "/" + d.r + ruta, Object.assign({}, opts, {
+    return fetch("https://api.github.com/repos/" + d.u + "/" + d.r + ruta, Object.assign({ cache: "no-store" }, opts, {
       headers: Object.assign({ Accept: "application/vnd.github+json", Authorization: "Bearer " + (tk || token()) }, opts.headers || {})
     }));
   }
-  const errGh = st => st === 401 || st === 403 ? "El token no es válido o no tiene permiso. Vuelve a conectarlo." : st === 404 ? "No se encontró el repositorio. Revisa el usuario y el nombre." : "Error de GitHub (" + st + ").";
+  async function errGh(res) {
+    let det = "";
+    try { det = (await res.clone().json()).message || ""; } catch (e) {}
+    const st = res.status;
+    let base = st === 401 ? "El token no es válido o venció. Vuelve a conectarlo."
+      : st === 403 && /rate limit|abuse|retry|wait/i.test(det) ? "GitHub pide esperar unos minutos antes de volver a intentarlo."
+      : st === 403 ? "El token no tiene permiso para escribir. Revisa que tenga «Contents: Read and write»."
+      : st === 404 ? "No se encontró el repositorio o el token no tiene acceso a él."
+      : st === 413 || st === 422 ? "GitHub rechazó el archivo."
+      : "Error de GitHub (" + st + ").";
+    return base + (det ? " Detalle: " + det : "");
+  }
   const b64 = t => btoa(unescape(encodeURIComponent(t)));
 
   async function cargarDatos() {
@@ -547,15 +558,18 @@ document.getElementById("anio").textContent = "© " + new Date().getFullYear();
     return DATA;
   }
   async function guardarDatos(datos) {
-    for (let n = 0; n < 2; n++) {
+    let ultimo = "";
+    for (let n = 0; n < 4; n++) {
       let sha;
       const g = await gh("/contents/datos.json?ref=" + CONFIG.rama);
-      if (g.ok) sha = (await g.json()).sha; else if (g.status !== 404) throw new Error(errGh(g.status));
+      if (g.ok) sha = (await g.json()).sha; else if (g.status !== 404) throw new Error(await errGh(g));
       const p = await gh("/contents/datos.json", { method: "PUT", body: JSON.stringify({ message: "Actualizar catálogo", content: b64(JSON.stringify(datos, null, 2)), branch: CONFIG.rama, sha }) });
       if (p.ok) return "Guardado. En 1 o 2 minutos se verá en la página de tus clientes.";
-      if (p.status !== 409 && p.status !== 422) throw new Error(errGh(p.status));
+      if (p.status !== 409 && p.status !== 422) throw new Error(await errGh(p));
+      ultimo = await errGh(p);
+      await new Promise(r => setTimeout(r, 1500));
     }
-    throw new Error("No se pudo guardar por un conflicto. Inténtalo otra vez.");
+    throw new Error("No se pudo guardar por un conflicto. Espera un minuto e inténtalo otra vez. " + ultimo);
   }
   async function subirFoto(archivo) {
     const bmp = await createImageBitmap(archivo);
@@ -566,7 +580,7 @@ document.getElementById("anio").textContent = "© " + new Date().getFullYear();
     const url = c.toDataURL("image/jpeg", 0.82);
     const nombre = "fotos/" + Date.now() + ".jpg";
     const p = await gh("/contents/" + nombre, { method: "PUT", body: JSON.stringify({ message: "Agregar foto", content: url.split(",")[1], branch: CONFIG.rama }) });
-    if (!p.ok) throw new Error(errGh(p.status));
+    if (!p.ok) throw new Error(await errGh(p));
     previews[nombre] = url;
     return nombre;
   }
@@ -664,7 +678,7 @@ document.getElementById("anio").textContent = "© " + new Date().getFullYear();
       msg("Comprobando…");
       try {
         const r = await gh("", {}, tk);
-        if (!r.ok) return msg(errGh(r.status));
+        if (!r.ok) return msg(await errGh(r));
         const info = await r.json();
         if (!(info.permissions && info.permissions.push)) return msg("Ese token no tiene permiso para escribir en el repositorio.");
         localStorage.setItem(KEY, tk);
