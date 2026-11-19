@@ -1,0 +1,262 @@
+{
+  "ig": "velaura",
+  "wa": "525579818008",
+  "velas": [
+    {
+      "nombre": "Noche de Vino",
+      "detalle": "Semillas de abundancia",
+      "precio": 100,
+      "cantidad": 1,
+      "img": "fotos/1795053542465.jpg",
+      "descripcion": "Una vela de tonos rojizos que representan la pasión y la elegancia, creando un ambiente cálido y lleno de encanto.",
+      "esencia": "Clericot",
+      "medidas": "9 cm de alto × 7 cm de ancho"
+    },
+    {
+      "nombre": "Cristal Imperial",
+      "detalle": "Semillas de abundancia, Ágatas, Pirita, Opalina",
+      "precio": 150,
+      "cantidad": 1,
+      "img": "fotos/1795053551159.jpg",
+      "descripcion": "Un vela inspirada en la tranquilidad de los días serenos. Su diseño en tonos claros aporta un toque de elegancia y armonía a cualquier espacio.",
+      "esencia": "Bebé",
+      "medidas": "9 cm de alto × 8 cm de ancho"
+    },
+    {
+      "nombre": "Violeta Mística",
+      "detalle": "Semillas de abundancia, Ágatas",
+      "precio": 70,
+      "cantidad": 1,
+      "img": "fotos/1795053556675.jpg",
+      "descripcion": "Una vela que evoca la tranquilidad de una noche de invierno. Sus tonos violetas y delicados detalles de nieve crean una atmosfera acogedora, llena de magia y serenidad.",
+      "esencia": "Floral",
+      "medidas": "6 cm de alto × 7 cm de ancho"
+    },
+    {
+      "nombre": "Nevada Púrpura",
+      "detalle": "Semillas de abundancia, Ágatas, Opalina",
+      "precio": 70,
+      "cantidad": 1,
+      "img": "fotos/1795053562799.jpg",
+      "descripcion": "Una vela de tonos violetas que transmite la magia del invierno transmitiendo tranquilidad, frescura y un encanto especial.",
+      "esencia": "Floral",
+      "medidas": "6 cm de alto × 7 cm de ancho"
+    },
+    {
+      "nombre": "Bicapa Romántica",
+      "detalle": "Semillas de abundancia",
+      "precio": 60,
+      "cantidad": 1,
+      "img": "fotos/1795053567728.jpg",
+      "descripcion": "Una vela bicolor con doble olor que transmite en el aire pasión, amor y frescura. Dando vida a una vela delicada y cautivadora",
+      "esencia": "Bebé y Clericot",
+      "medidas": "7 cm de alto × 7 cm de ancho"
+    },
+    {
+      "nombre": "Noche estrellada ",
+      "detalle": "Semillas de abundancia",
+      "precio": 80,
+      "cantidad": 1,
+      "img": "fotos/1795053712509.jpg",
+      "descripcion": "Una delicada combinación de blanco y rosa que transmite ternura y dulzura. Su envase decorado de estrellas evoca un cielo mágico en el ambiente.",
+      "esencia": "Bebé",
+      "medidas": "8 cm de alto × 8 cm de ancho"
+    },
+    {
+      "nombre": "Atardecer Cálido",
+      "detalle": "Semillas de abundancia",
+      "precio": 55,
+      "cantidad": 2,
+      "img": "fotos/1795053808532.jpg",
+      "descripcion": "Una vela cítrica y delicada que combina la frescura de la mandarina. Transmitiendo calidez y dulzura.",
+      "esencia": "Mandarina",
+      "medidas": "4 cm de alto x 6 cm de ancho"
+    },
+    {
+      "nombre": "Contraste del Amor",
+      "detalle": "Semillas de abundancia",
+      "precio": 55,
+      "cantidad": 1,
+      "img": "fotos/1795053909207.jpg",
+      "descripcion": "Una combinación de blanco y rojo que simboliza la pureza y la pasión, creando un diseño lleno de armonía y elegancia.",
+      "esencia": "Bebé y clericot",
+      "medidas": "6 cm de alto x 5 cm de ancho"
+    },
+    {
+      "nombre": "Capullo de primavera",
+      "detalle": "Semillas de abundancia",
+      "precio": 55,
+      "cantidad": 1,
+      "img": "fotos/1795053978631.jpg",
+      "descripcion": "Pequeña vela perfecta para crear un ambiente cálido, deilicado y acogedor.",
+      "esencia": "Rosas",
+      "medidas": "6 cm de alto x 5 cm de ancho"
+    },
+    {
+      "nombre": "Cuna de Primavera",
+      "detalle": "Semillas de abundancia",
+      "precio": 70,
+      "cantidad": 1,
+      "img": "fotos/1795054185142.jpg",
+      "descripcion": "Vela ideal para llenar tus espacios ocn una esencia fresca y crear un ambiente relajante y armonioso.",
+      "esencia": "Floral",
+      "medidas": "5 cm de alto x 8 cm de ancho"
+    },
+    {
+      "nombre": "Vela de Reno",
+      "detalle": "-",
+      "precio": 85,
+      "cantidad": 1,
+      "img": "fotos/1795055442329.jpg",
+      "descripcion": "Vela con delicioso aroma a canela, perfecta para dare un toque cálido, acogedor y navideño a cualquier espacio.",
+      "esencia": "Canela",
+      "medidas": "8 cm de alto x 9 cm de ancho"
+    },
+    {
+      "nombre": "Vela de Jengibre",
+      "detalle": "-",
+      "precio": 45,
+      "cantidad": 1,
+      "img": "fotos/1795055600919.jpg",
+      "descripcion": "Vela en forma de galleta de jengibre que llena tus espacios de cálidez con un toque dulce. Perfecto para darle un ambiente acogedor y navideño a tu hogar en estas fechas.",
+      "esencia": "Canela",
+      "medidas": "7 cm de alto x 5 cm de ancho"
+    },
+    {
+      "nombre": "Vela de Borrego",
+      "detalle": "-",
+      "precio": 60,
+      "cantidad": 1,
+      "img": "fotos/1795061103233.jpg",
+      "descripcion": "Vela con un diseño tierno y encantador que aporta un toque de calidez y dulzura a cualquier espacio. ",
+      "esencia": "Canela",
+      "medidas": "5 cm de alto x 8 cm de ancho"
+    },
+    {
+      "nombre": "Vela de Pino Rojo ",
+      "detalle": "-",
+      "precio": 70,
+      "cantidad": 1,
+      "img": "fotos/1795061129291.jpg",
+      "descripcion": "Vela con un agradable olor a chocolate que aporta un toque dulce y acogedor. Ideal para llenar tus espacios de calidez y darle a tu hogar un encantador ambiente navideño.",
+      "esencia": "Chocolate",
+      "medidas": "9 cm de alto x 7 cm de ancho"
+    },
+    {
+      "nombre": "Vela de Pino Verde",
+      "detalle": "-",
+      "precio": 70,
+      "cantidad": 1,
+      "img": "fotos/1795061151426.jpg",
+      "descripcion": "Vela con un diseño navideño lleno de detalles que aporta un toque festivo y elegante a cualquier espacio.",
+      "esencia": "Chocolate",
+      "medidas": "9 cm de alto x 7 cm de ancho"
+    },
+    {
+      "nombre": "Paquete #1",
+      "detalle": "Variado",
+      "precio": 300,
+      "cantidad": 1,
+      "img": "fotos/1795055385497.jpg",
+      "descripcion": "Paquete con 1 vela aromática olor floral, 1 Jabón para el cuerpo y 1 Crema para manos.",
+      "esencia": "Variado",
+      "medidas": "4 cm de alto x 24 cm de ancho"
+    },
+    {
+      "nombre": "Paquete #2 ",
+      "detalle": "Variado",
+      "precio": 350,
+      "cantidad": 1,
+      "img": "fotos/1795056234573.jpg",
+      "descripcion": "Paquete con 1 vela aromática en envase metálico con diseño de mandala, 1 vela de borrego olor a canela, 1 crema para manos y 1 jabón para manos.",
+      "esencia": "Variado",
+      "medidas": "4 cm de alto x 24 cm de ancho"
+    },
+    {
+      "nombre": "Paquete #3",
+      "detalle": "Variado",
+      "precio": 180,
+      "cantidad": 1,
+      "img": "fotos/1795061174226.jpg",
+      "descripcion": "Paquete con 1 vela de reno y 1 vela de borrego, ambas con olor a canela.",
+      "esencia": "Variado",
+      "medidas": "5 cm de alto x 15 cm de ancho"
+    },
+    {
+      "nombre": "Paquete #4",
+      "detalle": "Variado",
+      "precio": 330,
+      "cantidad": 1,
+      "img": "fotos/1795056686352.jpg",
+      "descripcion": "Paquete con 1 vela aromática olor a cítricos, 1 vela de jengibre olor a canela, 1 vela de borrego olor a canela y 1 jabón para manos.",
+      "esencia": "Variado",
+      "medidas": "4 cm de alto x 24 cm de ancho"
+    },
+    {
+      "nombre": "Paquete #5",
+      "detalle": "Variado",
+      "precio": 430,
+      "cantidad": 1,
+      "img": "fotos/1795056858464.jpg",
+      "descripcion": "Paquete con 1 vela aromática olor clericot, 1 vela de borrego olor a canela 1 vela de jengibre olor a canela, 1 vela de pino verde olor a chocolate, 1 jabón para manos y 1 desodorante en crema.",
+      "esencia": "Variado",
+      "medidas": "7 cm de altura x 27 cm de ancho"
+    },
+    {
+      "nombre": "Paquete #6",
+      "detalle": "Variado",
+      "precio": 250,
+      "cantidad": 1,
+      "img": "fotos/1795057019201.jpg",
+      "descripcion": "Paquete con 1 vela aromática en envase metálico con diseño de mandala, 1 jabón para manos y 1 desodorante en crema.",
+      "esencia": "Variado",
+      "medidas": "5 cm de alto x 15 cm de ancho"
+    }
+  ],
+  "piedras": [
+    "Pirita",
+    "Venturina verde",
+    "Opalina",
+    "Ágatas (variedad de colores)"
+  ],
+  "esencias": [
+    "Bebé",
+    "Floral",
+    "Clericot",
+    "Cítricos",
+    "Mandarina",
+    "Rosas"
+  ],
+  "colores": [
+    {
+      "n": "Naranja",
+      "c": "#d78c09",
+      "s": "Fuerza vital, Creatividad, Ambición "
+    },
+    {
+      "n": "Rojo",
+      "c": "#cf0707",
+      "s": "Acción, Unión, Fuerza, Pasión, Magnetismo"
+    },
+    {
+      "n": "Morado",
+      "c": "#910dd9",
+      "s": "Espiritualidad, Transmutación, Hab. psíquicas"
+    },
+    {
+      "n": "Amarillo",
+      "c": "#dfe208",
+      "s": "Abundancia, Éxito, Optimismo"
+    },
+    {
+      "n": "Rosa",
+      "c": "#ed1de6",
+      "s": "Amor propio, Armonía, Paz, Sanación"
+    },
+    {
+      "n": "Blanco",
+      "c": "#ffffff",
+      "s": "Paz, Verdad, Esperanza, Protección"
+    }
+  ]
+}
